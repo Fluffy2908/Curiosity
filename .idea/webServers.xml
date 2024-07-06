@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="906493e8-fa3e-4f41-9008-e5a960ba2498" name="Curiosity" url="http://curiosity.si">
+      <webServer id="99216add-f08a-4d9b-a01f-2e7bfd1a5bff" name="Curiosity" url="http://curiosity.si">
         <fileTransfer host="curiosity.si" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
