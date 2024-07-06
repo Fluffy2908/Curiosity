@@ -32,20 +32,6 @@
                 'depth' => 2
             ));
             ?>
-            <!--<div class="icons-menu">
-                <a href="#">
-                    <span class="icon-search my-icon" aria-hidden="false"></span>
-                </a>
-                <a href="#">
-                    <span class="icon-user-tie my-icon" aria-hidden="false"></span>
-                </a>
-                <a href="#">
-                    <span class="icon-heart my-icon" aria-hidden="false"></span>
-                </a>
-                <a href="#">
-                    <span class="icon-cart my-icon" aria-hidden="false"></span>
-                </a>
-            </div>-->
         </div>
     </nav>
 </body>
