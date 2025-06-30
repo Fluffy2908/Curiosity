@@ -7,7 +7,7 @@ window.addEventListener( 'load', function() {
 
     const sliderInitialize = function(){
 
-    let splide = new Splide( '.trending .splide ', {
+    let splide = new Splide( '.trending .splide .quotes ', {
         perPage: 1,
         perMove: 1,
         mediaQuery: 'min',

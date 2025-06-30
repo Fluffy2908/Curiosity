@@ -19,20 +19,21 @@ if (!empty($block['className'])) {
 $feedback = get_field('feedback');
 
 ?>
-<article <?php echo $anchor ?> class="space-top ">
+<article <?php echo $anchor ?> class="space-top<?php echo esc_attr($class_name); ?>">
     <div class="headline-icons">
-        <span class="<?php echo $feedback['icon-feedback']; ?> padding-icon " aria-hidden="false"></span>
-            <h2 class="is-style-headline-icon">
-                <?php echo $feedback['titel']; ?>
-            </h2>
+        <span class="<?php echo $feedback['icon-feedback']; ?> padding-icon" aria-hidden="false"></span>
+        <h2 class="is-style-headline-icon TEST"><?php echo $feedback['titel']; ?></h2>
     </div>
+
     <div class="alignfull">
-        <div class="splide">
+        <div class="splide quotes">
             <div class="splide__track">
                 <ul class="splide__list">
-                            <?php include(get_template_directory() . '/template-parts/feedback-loop.php');?>
+                    <?php include get_template_directory() . '/template-parts/feedback-loop.php'; ?>
                 </ul>
             </div>
+
+            <!-- Progress bar -->
             <div class="my-slider-progress">
                 <div class="my-slider-progress-bar"></div>
             </div>
@@ -40,4 +41,5 @@ $feedback = get_field('feedback');
     </div>
 </article>
 
-   
+
+

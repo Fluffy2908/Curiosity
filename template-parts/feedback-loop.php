@@ -1,6 +1,5 @@
 <?php
 $feedback = get_field('feedback');
-
 if (!empty($feedback['quotes'])):
     foreach ($feedback['quotes'] as $item):
         $image = isset($item['image']) ? $item['image'] : '';

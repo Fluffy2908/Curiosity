@@ -18,7 +18,7 @@ Text Domain: wifi
 :root {
     --base-bg-color: rgb(34, 33, 33);
     --base-color: #FFFFFF;
-    --primary-color: rgb(0, 255, 0);
+    --primary-color: blue;
     --secondary-color: #c0f501;
     --sub-menu-color: rgba(0, 0, 0, 0.8);
     --navbar-height-mobile: 80px;
@@ -1266,4 +1266,13 @@ display: block;
     top: 5px;
     width: auto;
     z-index: 100000; /* Above WP toolbar. */
+}
+body::before {
+    content: "STYLE.CSS DELUJE ✅";
+    display: block;
+    background: red;
+    color: white;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
 }
