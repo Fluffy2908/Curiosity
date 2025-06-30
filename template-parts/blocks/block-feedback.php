@@ -20,7 +20,7 @@ $feedback = get_field('feedback');
 
 <article <?php echo $anchor; ?> class="space-top <?php echo esc_attr($class_name); ?>">
     <div class="headline-icons">
-        <span class="<?php echo esc_attr($feedback['icon-feedback']); ?> padding-icon" aria-hidden="false"></span>
+        <span class="<?php echo esc_attr($feedback['icon-feedback']); ?> padding-icon" aria-hidden="true"></span>
         <h2 class="is-style-headline-icon">
             <?php echo esc_html($feedback['titel']); ?>
         </h2>
