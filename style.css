@@ -1267,12 +1267,3 @@ display: block;
     width: auto;
     z-index: 100000; /* Above WP toolbar. */
 }
-body::before {
-    content: "STYLE.CSS DELUJE ✅";
-    display: block;
-    background: red;
-    color: white;
-    padding: 10px;
-    font-size: 20px;
-    text-align: center;
-}
