@@ -18,7 +18,7 @@ Text Domain: wifi
 :root {
     --base-bg-color: rgb(34, 33, 33);
     --base-color: #FFFFFF;
-    --primary-color: blue;
+    --primary-color: orange;
     --secondary-color: #c0f501;
     --sub-menu-color: rgba(0, 0, 0, 0.8);
     --navbar-height-mobile: 80px;
