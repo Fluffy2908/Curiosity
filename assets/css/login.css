@@ -1,0 +1,82 @@
+.login {
+    background-color: rgb(34, 33, 33);
+}
+.login h1 {
+    display: none;
+}
+.login-logo {
+    margin-left: 4em;
+}
+#login {
+    margin-top: -2em;
+
+}
+.creator {
+    text-align: center;
+}
+.creator small {
+    color: rgb(0, 255, 0);
+    font-size: 1.7em;
+}
+.login .button.wp-hide-pw:focus {
+    border-color: rgb(0, 255, 0);
+    box-shadow: 0 0 0 1px rgb(0, 255, 0);
+}
+.login .button.wp-hide-pw:focus:hover {
+    border-color: rgb(0, 255, 0);
+}
+.login #nav a {
+    color: rgb(0, 255, 0);
+}
+.login #nav a:hover {
+    color: #c0f501;
+}
+.login #backtoblog a {
+    color: rgb(0, 255, 0);
+}
+.login #backtoblog a:hover {
+    color: #c0f501;
+}
+.login form {
+    background: rgb(34, 33, 33);
+    color: rgb(0, 255, 0);
+    border: 1px solid #c0f501;
+}
+.wp-core-ui .button-primary {
+    background: rgb(34, 33, 33);
+    border-color: #c0f501;
+    color: rgb(0, 255, 0);
+    text-decoration: none;
+    text-shadow: none;
+}
+.wp-core-ui .button-primary:hover {
+    background: rgb(0, 255, 0);
+    border-color: #c0f501;
+    color: rgb(34, 33, 33);
+}
+.dashicons {
+    color: rgb(34, 33, 33);
+}
+.privacy-policy-link {
+    color: rgb(0, 255, 0);
+}
+.privacy-policy-link:hover {
+    color: #c0f501;
+}
+#language-switcher-locales {
+    background-color: rgb(34, 33, 33);
+    color: rgb(0, 255, 0);
+}
+#language-switcher-locales a:hover {
+    color: rgb(0, 255, 0);
+}
+.wp-core-ui .button {
+    background: rgb(34, 33, 33);
+    border-color: #c0f501;
+    color: rgb(0, 255, 0);
+}
+.wp-core-ui .button:hover {
+    background: rgb(0, 255, 0);
+    border-color: #c0f501;
+    color: rgb(34, 33, 33);
+}
