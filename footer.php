@@ -50,8 +50,8 @@
     <?php
 wp_footer();
 ?>
-    <!--<script src="Assets/js/scripts.js"></script>
-<script src="Assets/js/splide.min.js"></script> -->
+    <script src="assets/js/scripts.js"></script>
+<script src="assets/js/splide.min.js"></script>
 </body>
 
 </html>

@@ -1,33 +1,19 @@
 <?php
-/**
- * Template part for displaying a single feedback quote
- *
- * @param array $args expects $args['item'] with 'text' and 'image'
- */
+$feedback = get_field('feedback');
 
-if (!isset($args['item']) || !is_array($args['item'])) {
-    echo '<!-- ⚠️ Invalid quote item -->';
-    return;
-}
-
-$item = $args['item'];
-
-$text = isset($item['text']) ? esc_html($item['text']) : '';
-$image_url = '';
-
-if (is_array($item['image']) && isset($item['image']['url'])) {
-    $image_url = esc_url($item['image']['url']);
-} elseif (!empty($item['image'])) {
-    $image_url = esc_url($item['image']);
-}
+if (!empty($feedback['quotes'])):
+    foreach ($feedback['quotes'] as $item):
+        $image = isset($item['image']) ? $item['image'] : '';
+        $text = isset($item['text']) ? $item['text'] : '';
+        ?>
+        <li class="splide__slide">
+            <div class="feedback-loop" style="background-image: url('<?php echo esc_url($image); ?>');">
+                <span class="icon-quotes-left my-icon" aria-hidden="false"></span>
+                <h3 class="quotes-customer"><?php echo esc_html($text); ?></h3>
+                <span class="icon-quotes-right my-icon" aria-hidden="false"></span>
+            </div>
+        </li>
+    <?php
+    endforeach;
+endif;
 ?>
-
-<div class="quote-item p-4 border rounded text-center">
-    <?php if ($image_url): ?>
-        <img src="<?php echo $image_url; ?>" alt="" class="w-16 h-16 mx-auto mb-3 rounded-full object-cover" />
-    <?php endif; ?>
-
-    <?php if ($text): ?>
-        <p class="text-gray-700 text-sm"><?php echo $text; ?></p>
-    <?php endif; ?>
-</div>
