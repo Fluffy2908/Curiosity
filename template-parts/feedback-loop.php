@@ -1,19 +1,33 @@
 <?php
-$feedback_group = get_field('feedback');
-if (!empty($feedback_group['quotes'])):
-    foreach ($feedback_group['quotes'] as $item):
-        $image_url = is_array($item['image']) ? $item['image']['url'] : esc_url($item['image']);
-        ?>
-        <li class="splide__slide quotes">
-            <div class="quotes-item" style="background-image: url('<?php echo esc_url($image_url); ?>');">
-                <span class="icon-quotes-left my-icon" aria-hidden="true"></span>
-                <h3 class="quotes-customer"><?php echo esc_html($item['text']); ?></h3>
-                <span class="icon-quotes-right my-icon" aria-hidden="true"></span>
-            </div>
-        </li>
-    <?php
-    endforeach;
-else:
-    echo '<li class="splide__slide"><strong>⚠️ Feedback quotes field is empty.</strong></li>';
-endif;
+/**
+ * Template part for displaying a single feedback quote
+ *
+ * @param array $args expects $args['item'] with 'text' and 'image'
+ */
+
+if (!isset($args['item']) || !is_array($args['item'])) {
+    echo '<!-- ⚠️ Invalid quote item -->';
+    return;
+}
+
+$item = $args['item'];
+
+$text = isset($item['text']) ? esc_html($item['text']) : '';
+$image_url = '';
+
+if (is_array($item['image']) && isset($item['image']['url'])) {
+    $image_url = esc_url($item['image']['url']);
+} elseif (!empty($item['image'])) {
+    $image_url = esc_url($item['image']);
+}
 ?>
+
+<div class="quote-item p-4 border rounded text-center">
+    <?php if ($image_url): ?>
+        <img src="<?php echo $image_url; ?>" alt="" class="w-16 h-16 mx-auto mb-3 rounded-full object-cover" />
+    <?php endif; ?>
+
+    <?php if ($text): ?>
+        <p class="text-gray-700 text-sm"><?php echo $text; ?></p>
+    <?php endif; ?>
+</div>

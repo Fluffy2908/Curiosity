@@ -72,6 +72,20 @@ if(function_exists('acf_add_options_page')){
                     wp_enqueue_script('feedback-js', get_template_directory_uri() . '/assets/js/splideFeedback.js');
                 }
             ));
+            acf_register_block_type([
+                'name'            => 'feedback',
+                'title'           => __('Feedback', 'curiosity'),
+                'description'     => __('Feedback sekcija z ikonami in citati.', 'curiosity'),
+                'render_template' => get_template_directory() . '/template-parts/blocks/feedback.php',
+                'category'        => 'curiosity-blocks',
+                'icon'            => 'format-quote',
+                'keywords'        => ['feedback', 'testimonial', 'quote'],
+                'mode'            => 'preview',
+                'supports'        => [
+                    'align' => false,
+                    'mode'  => true,
+                ],
+            ]);
             acf_register_block_type(array(
                 'name' => 'webdev-spalten-block',
                 'title' => __('Spalten-Block', 'wifi'),
