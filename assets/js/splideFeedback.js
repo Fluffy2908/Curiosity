@@ -8,9 +8,11 @@ window.addEventListener('load', function () {
         const splide = new Splide(splideElement, {
             type: 'loop',
             autoplay: true,
+            interval: 3500,
             pagination: false,
             arrows: true,
             perPage: 1,
+            speed: 700
         });
 
         const bar = splide.root.querySelector('.my-slider-progress-bar');

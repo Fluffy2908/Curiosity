@@ -18,7 +18,7 @@ Text Domain: wifi
 :root {
     --base-bg-color: rgb(34, 33, 33);
     --base-color: #FFFFFF;
-    --primary-color: orange;
+    --primary-color: rgb(0, 255, 0);
     --secondary-color: #c0f501;
     --sub-menu-color: rgba(0, 0, 0, 0.8);
     --navbar-height-mobile: 80px;
@@ -230,6 +230,7 @@ body {
     -webkit-box-pack: end;
     -ms-flex-pack: end;
     justify-content: flex-end;
+    z-index: 999;
 }
 @media screen and (min-width:600px) {
     #nav-button {
@@ -244,6 +245,7 @@ body {
 #nav-button-icon {
     display: block;
     position: relative;
+    z-index: 999;
     -webkit-transition: background-color 250ms ease-in-out;
     -o-transition: background-color 250ms ease-in-out;
     transition: background-color 250ms ease-in-out;
@@ -282,16 +284,16 @@ body {
     -ms-transform: translateY(10px);
     transform: translateY(10px);
 }
-#nav-toggle:checked ~ .icons-menu #nav-button #nav-button-icon {
+#nav-toggle:checked ~ #nav-button #nav-button-icon {
     background-color: transparent;
 }
-#nav-toggle:checked ~ .icons-menu #nav-button #nav-button-icon::after {
+#nav-toggle:checked ~ #nav-button #nav-button-icon::after {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
     background-color: var(--secondary-color);
 }
-#nav-toggle:checked ~ .icons-menu #nav-button #nav-button-icon::before {
+#nav-toggle:checked ~ #nav-button #nav-button-icon::before {
     -webkit-transform: rotate(-45deg);
     -ms-transform: rotate(-45deg);
     transform: rotate(-45deg);
@@ -311,6 +313,7 @@ input[type='checkbox'] {
     -ms-transform: translateX(30px);
     transform: translateX(30px);
     cursor: pointer;
+    z-index: 999;
 }
 @media screen and (min-width: 950px) {
     .menu-toggle {
@@ -547,21 +550,35 @@ input:checked ~ .sub-menu {
 .icons-menu .my-icon:hover {
     color: var(--secondary-color);
 }
+/* Osnovno poravnano na center */
 .headline-icons {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
+    justify-content: center;
     align-items: center;
+    text-align: center;
 }
+
+/* Od širine 950px naprej poravnamo na levo */
+@media screen and (min-width: 950px) {
+    .headline-icons {
+        justify-content: flex-start;
+        align-items: center;
+        text-align: left;
+        gap: 1rem;
+    }
+
+    .headline-icons h2 {
+        margin: 0;
+    }
+}
+
 .padding-icon {
     padding-right: 0.3em;
     padding-bottom: 1.4em;
     font-size: 2em;
 }
 #header {
-    background-image: url(Assets/Img/AdobeStock_570542727.jpeg);
+    /*background-image: url(Assets/Img/AdobeStock_570542727.jpeg);*/
     background-size: cover;
     min-height: 100vh;
     display: -webkit-box;
@@ -583,7 +600,7 @@ input:checked ~ .sub-menu {
     }
 }
 #header-blog {
-    background-image: url(Assets/Img/AdobeStock_570542727.jpeg);
+    /*background-image: url(Assets/Img/AdobeStock_570542727.jpeg);*/
     background-size: cover;
     min-height: 40vh;
     display: -webkit-box;
@@ -713,29 +730,29 @@ figure {
     position: relative;
     border-radius: 200px;
     overflow: hidden;
-    -webkit-transition: -webkit-box-shadow 200ms linear;
-    transition: -webkit-box-shadow 200ms linear;
-    -o-transition: box-shadow 200ms linear;
     transition: box-shadow 200ms linear;
-    transition: box-shadow 200ms linear, -webkit-box-shadow 200ms linear;
 }
+.trend:hover {
+    box-shadow: 0 3px 6px rgba(255, 255, 255, 0.2);
+}
+
 .trend .trend-caption {
     position: absolute;
     top: 1rem;
     left: 20%;
     right: 20%;
     text-align: center;
-    -webkit-transform: translateY(-200%);
-    -ms-transform: translateY(-200%);
     transform: translateY(-200%);
-    -webkit-transition: -webkit-transform 200ms ease-in-out;
-    transition: -webkit-transform 200ms ease-in-out;
-    -o-transition: transform 200ms ease-in-out;
     transition: transform 200ms ease-in-out;
-    transition: transform 200ms ease-in-out, -webkit-transform 200ms ease-in-out;
-    background-color: rgba(34,33,33,0.8);
+    background-color: rgba(34, 33, 33, 0.8);
     border-radius: 30px;
 }
+
+.trend:hover .trend-caption,
+.trending.is-mobile .trend-caption {
+    transform: translateY(0);
+}
+
 .trend-tittle {
     font-weight: 500;
     margin: 0;
@@ -751,63 +768,41 @@ figure {
         font-size: 1.5em;
     }
 }
-.trend:hover .trend-caption{
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
-    transform: translateY(0);
-}
-.trending.is-mobile .trend-caption{
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
-    transform: translateY(0);
-    -webkit-transition: -webkit-transform 200ms ease-in-out;
-    transition: -webkit-transform 200ms ease-in-out;
-    -o-transition: transform 200ms ease-in-out;
-    transition: transform 200ms ease-in-out;
-    transition: transform 200ms ease-in-out, -webkit-transform 200ms ease-in-out;
-}
+
 .trending {
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
+    display: block;
+}
+.trending .splide {
+    display: flex;
+    justify-content: center;
 }
 .trending-grid {
-    display: -ms-grid;
     display: grid;
-    -ms-grid-columns: 1fr;
-    grid-template-columns: 1fr;
-    grid-gap: 30px
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    justify-content: center;
+    gap: 30px;
+    margin: 0 auto;
+    max-width: calc(250px * 5 + 30px * 4); /* max 5 v vrstici */
+    width: 100%;
 }
-@media screen and (min-width: 250px){
-    .trending-grid{
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+/* Na zelo majhnih ekranih (do 400px) naj bo vedno 1 v vrstici */
+@media screen and (max-width: 400px) {
+    .trending-grid {
+        grid-template-columns: 1fr;
     }
 }
-@media screen and (min-width:800px){
-    .trending-grid{
-        grid-gap:30px;
-    }
-}
-.trend:hover{
-    -webkit-box-shadow: 0 3px 6px rgba(255, 255, 255, 0.2);
-    box-shadow: 0 3px 6px rgba(255, 255, 255, 0.2);
-}
-@media screen and (min-width:800px) {
+
+@media screen and (min-width: 800px) {
     .trend-produkt {
-        display: -webkit-box;
-        display: -ms-flexbox;
         display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
         align-items: center;
+    }
+    .trend-text {
+        margin-left: 3em;
     }
 }
 .trend-text {
     text-align: center;
-}
-@media screen and (min-width:800px) {
-    .trend-text {
-        margin-left: 3em;
-    }
 }
 #footer-page {
     display: -webkit-box;
@@ -924,14 +919,14 @@ figure {
     }
 }
 .feedback-loop {
-    background-image: url(assets/Img/Curiosity-hintergrund.jpg);
+   /* background-image: url(assets/Img/Curiosity-hintergrund.jpg);*/
     background-size: cover;
-    height: 200px;
+    height: 400px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-pack: distribute;
-    justify-content: space-around;
+    justify-content: space-evenly;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -939,7 +934,7 @@ figure {
 }
 @media screen and (min-width: 950px) {
     .feedback-loop {
-        height: 400px;
+        height: 600px;
         font-size: 1.6em;
     }
 }
@@ -963,10 +958,15 @@ figure {
 
 .my-slider-progress-bar {
     background: var(--secondary-color);
-    height: 3px;
+    height: 4px;
     -webkit-transition: width 400ms ease;
     -o-transition: width 400ms ease;
     transition: width 400ms ease;
+}
+@media screen and (min-width: 950px){
+    .my-slider-progress-bar {
+        height: 7px;
+    }
 }
 .feedback-loop .my-icon {
     font-size: 1.2em;
