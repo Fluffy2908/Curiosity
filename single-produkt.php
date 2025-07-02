@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<main id="content" class="container">
+<main id="content" class="container ">
     <?php echo '<div>';
     the_title('<h1 class="is-style-headline">', '</h1>');
     if (have_posts()) {

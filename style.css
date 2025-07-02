@@ -23,7 +23,7 @@ Text Domain: wifi
     --sub-menu-color: rgba(0, 0, 0, 0.8);
     --navbar-height-mobile: 80px;
     --navbar-height-desktop: 120px;
-    --container-max-width: 2560px;
+    --container-max-width: 1700px;
     --columns-gap: 30px;
 }
 
@@ -89,15 +89,86 @@ h6 {
     src: url('assets/Fonts/barrio-v19-latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+ */
     url('assets/Fonts/barrio-v19-latin-regular.woff') format('woff'); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
-img:not([src$=svg]) {
+/* ============================
+   Globalno osnovno pravilo za vse slike
+   ============================ */
+img {
     max-width: 100%;
     height: auto;
-    vertical-align: bottom;
-    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+/* ============================
+   Namenske velikosti
+   ============================ */
+img.img-small {
+    max-width: 400px;
+}
+
+img.img-medium {
+    max-width: 600px;
+}
+
+img.img-large {
+    max-width: 1000px;
+}
+
+img.img-full {
+    max-width: 100%;
+}
+
+/* ============================
+   Objektne nastavitve
+   ============================ */
+img.img-cover {
+    object-fit: cover;
+}
+
+img.img-contain {
+    object-fit: contain;
+}
+
+img.img-fill {
+    object-fit: fill;
+}
+
+img.img-none {
+    object-fit: none;
+}
+
+/* ============================
+   Oblikovanje robov
+   ============================ */
+img.img-rounded {
+    border-radius: 15px;
+}
+
+img.img-rounded-lg {
+    border-radius: 30px;
+}
+
+img.img-circle {
+    border-radius: 9999px;
+}
+
+/* ============================
+   Dodatni učinki
+   ============================ */
+img.img-shadow {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+img.img-border {
+    border: 2px solid #fff;
+}
+
+img.img-center {
+    margin-inline: auto;
 }
 .container {
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: auto;
+    margin-right: auto;
     max-width: var(--container-max-width);
     padding-left: calc(var(--columns-gap) / 2);
     padding-right: calc(var(--columns-gap) / 2);
@@ -108,11 +179,29 @@ img:not([src$=svg]) {
         padding-right: calc(var(--columns-gap));
     }
 }
+/* Na ultra velikih zaslonih – odstrani padding, da je rob containerja 100% */
+@media screen and (min-width: 1700px) {
+    .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
 .columns {
     margin-top: 1em;
 }
 .columns > .column {
     margin-bottom: calc(var(--columns-gap) / 2);
+}
+/* Mobile */
+@media screen and (max-width: 949px) {
+    .columns {
+        flex-direction: column-reverse;
+    }
+
+    .columns > .column {
+        flex: 0 0 auto;
+        max-width: 100%;
+    }
 }
 /* TABLET-Breakpoint */
 @media screen and (min-width: 950px) {
@@ -555,7 +644,7 @@ input:checked ~ .sub-menu {
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+
 }
 
 /* Od širine 950px naprej poravnamo na levo */
@@ -563,7 +652,6 @@ input:checked ~ .sub-menu {
     .headline-icons {
         justify-content: flex-start;
         align-items: center;
-        text-align: left;
         gap: 1rem;
     }
 
@@ -724,7 +812,7 @@ figure {
     margin: 0;
 }
 .space-top{
-    margin-top: 2em;
+    margin-top: 7em;
 }
 .trend {
     position: relative;
@@ -957,7 +1045,7 @@ figure {
 }
 
 .my-slider-progress-bar {
-    background: var(--secondary-color);
+    background: var(--primary-color);
     height: 4px;
     -webkit-transition: width 400ms ease;
     -o-transition: width 400ms ease;
@@ -966,6 +1054,7 @@ figure {
 @media screen and (min-width: 950px){
     .my-slider-progress-bar {
         height: 7px;
+        background: var(--secondary-color);
     }
 }
 .feedback-loop .my-icon {
@@ -1235,6 +1324,80 @@ a .link {
 display: block;
     background-color: blue;
  }
+/* ===============================
+   Spalten Block Layout & Image
+   =============================== */
+
+/* Glavni style za sliko v spalten blocku */
+.spalten-block .spalten-image {
+    max-width: 550px !important;
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover !important;
+    display: block;
+    margin-inline: auto;
+    border-radius: 30px;
+}
+
+/* Glavni wrapper */
+.spalten-block {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 2rem;
+    padding: 2rem 1rem;
+}
+@media screen and (min-width: 950px) {
+    .spalten-block {
+        flex-wrap: nowrap;
+    }
+}
+/* Stolpci znotraj spalten-block */
+.spalten-block .column {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Reverse layout – samo nad 950px */
+@media screen and (min-width: 950px) {
+    .spalten-block.reverse {
+        flex-direction: row-reverse;
+    }
+}
+
+/* Mobilna postavitev: TEXT zgoraj, SLIKA spodaj */
+@media screen and (max-width: 949px) {
+    .spalten-block {
+        flex-direction: column;
+    }
+
+    .spalten-block.reverse {
+        flex-direction: column; /* ni zrcaljenja na mobile */
+    }
+
+    .spalten-block .column {
+        flex: 1 1 auto;
+        width: 100%;
+    }
+}
+
+/* Margin spodaj za heading in paragraf */
+.spalten-block .column h2,
+.spalten-block .column p {
+    margin-bottom: 1rem;
+}
+/* Container omejitev da nad 1700px imam vse elemente poravnane z contajnerjem brez padding */
+@media screen and (min-width: 1700px) {
+    main.wide .columns,
+    main.wide .container,
+    main.wide .section,
+    main.wide .wrapper {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
 
 * Text meant only for screen readers
 *.screen-reader-text {
